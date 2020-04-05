@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Blog{% endblock %}
+
+{% block body %}
+
+       
+    <section class="blog-list px-3 py-5 p-md-5">
+        <div class="container text-center">
+            <h1 class="text-center mb-5">Admin Blog</h1>
+                <a class="" href="{{path('create_article')}}"><i class="fas fa-bookmark fa-fw mr-2"></i>Créer un article</a>
+
+            <div>
+                <div class="media">
+                    <table class="table table-hover mt-2 text">
+                        <thead class="color-blue text-white text-uppercase">
+                            <tr>
+                                <th class="text-center">Image</th>
+                                <th class="text-center">Titre</th>
+                                <th class="text-center">Contenu</th>
+                                <th class="text-center">Modifier</th>
+                                <th class="text-center">Supprimer</th>
+                            </tr>
+                        </thead>
+                            
+                        {% for article in articles %}
+                        
+                        <tr>
+                            <td class="text-center"><img src="{{asset('images/' ~ article.image)}}" alt="logo" width="50" height="50"></td>
+                            <td class="text-center">{{ article.title }}</td>
+                            <td class="text-center w-50">{{ article.content|slice(0,100) }}</td>
+                            <td class="text-center"><a class="both input-style color-blue" href="{{path('update_article', {'id' : article.id})}}">Update</a></td>
+                            <td class="text-center"><form action="{{path('delete_article', {'id' : article.id})}}" method="post" class="col" onsubmit="return confirm('Voulez-vous vraiment supprimer ?');">
+                                <input type="hidden" name="_method" value="SUP">
+                                <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ article.id)}}">
+                                <input type="submit" value="Supprimer" class="input-style both input-style-color">
+                            </form></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                    </div><!--//media-body-->
+                </div><!--//media-->
+            </div><!--//item-->
+{% endblock %}

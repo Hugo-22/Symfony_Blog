@@ -2,10 +2,54 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+            <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+        {# <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/css/mdb.min.css" rel="stylesheet"> #}
+        <link rel="stylesheet" href="{{asset('css/main.css')}}">
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <header class="header text-center">	    
+            <h1 class="blog-name pt-lg-4 mb-0"></h1>
+            
+            <nav class="navbar navbar-expand-lg navbar-dark" >
+               
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div id="navigation" class="collapse navbar-collapse flex-column" >
+                    <div class="profile-section pt-3 pt-lg-0">
+                        <img class="profile-image mb-3 rounded-circle mx-auto" src="{{asset('images/profile.png')}}" alt="profil">	
+                        
+                        <div class="bio mb-3">Bonjour, je suis Hugo Denis apprenant développeur web. À travers ce blog, je vais vous présenter mes différents projets web Front-end et Back-end.</div><!--//bio-->
+                        <ul class="social-list list-inline py-3 mx-auto">
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/hugo-denis/" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            <li class="list-inline-item"><a href="https://github.com/Hugo-22" target="_blank"><i class="fab fa-github-alt fa-fw"></i></a></li>
+                            <li class="list-inline-item"><a href="https://hugodenis.fr/" target="_blank"><i class="fas fa-globe"></i></a></li>
+                        </ul><!--//social-list-->
+                        <hr> 
+                    </div><!--//profile-section-->
+                    
+                    <ul class="navbar-nav flex-column text-left">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('home')}}"><i class="fas fa-home fa-fw mr-2"></i>Accueil</a>
+                        </li>
+                        {# <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-bookmark fa-fw mr-2"></i>Blog Articles</a>
+                        </li> #}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-user fa-fw mr-2"></i>À propos de moi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('admin')}}"><i class="fas fa-user-lock mr-2"></i>Admin</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

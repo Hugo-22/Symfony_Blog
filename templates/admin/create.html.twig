@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Blog{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center mt-3">Créer un nouvel article</h1>
+
+    {{form_start(form)}}
+
+   {{form_row(form.title, {'attr' : {'placeholder' : "Titre"}})}}
+   {{form_row(form.content, {'attr' : {'placeholder' : "Contenu"}})}}
+   {{form_row(form.image, {'attr' : {'placeholder' : "Image"}})}}
+
+   <input type="submit" value="Valider" class="btn btn-primary">
+
+    {{form_end(form)}}
+
+</div>
+{% endblock %}
